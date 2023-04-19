@@ -1,0 +1,11 @@
+{
+    "name": "hexlet/code",
+    "description": "Brain games project :)",
+    "authors": [
+        {
+            "name": "Семён Никифоров",
+            "email": "semnikiforov2000@gmail.com"
+        }
+    ],
+    "require": {}
+}
