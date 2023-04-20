@@ -1,11 +1,16 @@
 {
     "name": "hexlet/code",
-    "description": "Brain games project :)",
+    "bin": [
+        "bin/brain-games"
+    ],
+    "type": "project",
     "authors": [
         {
             "name": "Семён Никифоров",
             "email": "semnikiforov2000@gmail.com"
         }
     ],
+    "description": "Brain games project :)",
+    "license": "MIT",
     "require": {}
 }
