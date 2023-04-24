@@ -19,7 +19,8 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Parity.php"
+            "src/Engine.php",
+            "src/Games/Parity.php"
         ]
     },
     "require-dev": {

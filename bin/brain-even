@@ -4,7 +4,20 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use function BrainGamesProject\Cli\showGreeting;
-use function BrainGamesProject\Parity\makeParityGame;
+use function BrainGamesProject\Games\Parity\getParityGameCondition;
+use function BrainGamesProject\Engine\showGameCondition;
+use function BrainGamesProject\Games\Parity\createParityGameData;
+use function BrainGamesProject\Engine\checkAnswer;
+use function BrainGamesProject\Engine\congratulate;
 
 showGreeting();
-makeParityGame();
+showGameCondition(getParityGameCondition());
+$userCorrectAnswers = 0;
+while ($userCorrectAnswers < SUCCESS) {
+    if (checkAnswer(createParityGameData()) === true) {
+        $userCorrectAnswers++;
+    } else {
+        $userCorrectAnswers = 0;
+    }
+}
+congratulate();
