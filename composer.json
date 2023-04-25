@@ -24,7 +24,8 @@
             "src/Engine.php",
             "src/Games/Parity.php",
             "src/Games/Calc.php",
-            "src/Games/Gcd.php"
+            "src/Games/Gcd.php",
+            "src/Games/Progression.php"
         ]
     },
     "require-dev": {
