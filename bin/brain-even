@@ -13,11 +13,11 @@ use function BrainGamesProject\Engine\congratulate;
 showGreeting();
 showGameCondition(getParityGameCondition());
 $userCorrectAnswers = 0;
-while ($userCorrectAnswers < SUCCESS) {
+for ($i = $userCorrectAnswers; $i < SUCCESS; $i++) {
     if (checkAnswer(createParityGameData()) === true) {
-        $userCorrectAnswers++;
+        continue;
     } else {
-        $userCorrectAnswers = 0;
+        return;
     }
 }
 congratulate();
