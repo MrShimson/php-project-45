@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . "/../vendor/autoload.php";
+
+use function BrainGamesProject\Cli\showGreeting;
+use function BrainGamesProject\Games\Calc\getCalcGameCondition;
+use function BrainGamesProject\Engine\showGameCondition;
+use function BrainGamesProject\Games\Calc\createCalcGameData;
+use function BrainGamesProject\Engine\checkAnswer;
+use function BrainGamesProject\Engine\congratulate;
+
+showGreeting();
+showGameCondition(getCalcGameCondition());
+$userCorrectAnswers = 0;
+for ($i = $userCorrectAnswers; $i < SUCCESS; $i++) {
+    if (checkAnswer(createCalcGameData()) === true) {
+        continue;
+    } else {
+        return;
+    }
+}
+congratulate();
