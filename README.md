@@ -6,3 +6,5 @@
 https://asciinema.org/a/580292 - Brain-even review
 
 https://asciinema.org/a/580293 - Brain-calc review
+
+https://asciinema.org/a/580301 - Brain-gcd review
