@@ -25,6 +25,6 @@ function isPrime(int $number): string
 function createPrimeGameData(): array
 {
     $expression = rand(1, 100);
-    $correctAnswer = isPrime(($expression));
+    $correctAnswer = isPrime($expression);
     return [$expression, $correctAnswer];
 }
