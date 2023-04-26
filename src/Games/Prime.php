@@ -10,8 +10,8 @@ function getPrimeGameCondition(): string
 function createPrimeGameData(): array
 {
     $expression = rand(1, 100);
-    $i = 2;
-    $divisiors = [1];
+    $i = 1;
+    $divisiors = [];
     while ($i <= $expression) {
         if ($expression % $i === 0) {
             $divisiors[] = $i;
