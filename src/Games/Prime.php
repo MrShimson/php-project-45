@@ -7,23 +7,24 @@ function getPrimeGameCondition(): string
     return 'Answer "yes" if given number is prime. Otherwise answer "no".';
 }
 
-function createPrimeGameData(): array
+function isPrime(int $number): string
 {
-    $expression = rand(1, 100);
-    $i = 2;
-    $divisiors = [1];
-    while ($i <= $expression) {
-        if ($expression % $i === 0) {
+    $i = 1;
+    $divisiors = [];
+    while ($i <= $number) {
+        if ($number % $i === 0) {
             $divisiors[] = $i;
             $i++;
         } else {
             $i++;
         }
     }
-    if (sizeof($divisiors) > 2) {
-        $correctAnswer = "no";
-    } else {
-        $correctAnswer = "yes";
-    }
+    return sizeof($divisiors) > 2 ? "no" : "yes";
+}
+
+function createPrimeGameData(): array
+{
+    $expression = rand(1, 100);
+    $correctAnswer = isPrime(($expression));
     return [$expression, $correctAnswer];
 }
