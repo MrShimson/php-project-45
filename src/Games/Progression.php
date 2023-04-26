@@ -10,10 +10,10 @@ function getProgressionGameCondition(): string
 function createProgressionGameData(): array
 {
     $progression = [];
-    $progressionBeginning = rand(1, 100);
-    $progressionStep = rand(1, 10);
-    $requiredLength = 10;
-    for ($i = $progressionBeginning; sizeof($progression) < $requiredLength; $i += $progressionStep) {
+    $progStart = rand(1, 100); //Progression start (first number of progression)
+    $progStep = rand(1, 10); //Progression step (difference between two adjacent numbers)
+    $reqLength = 10;
+    for ($i = $progStart; sizeof($progression) < $reqLength; $i += $progStep) {
         $progression[] = $i;
     }
     $replacementIndex = array_rand($progression);
