@@ -10,7 +10,7 @@ use function BrainGamesProject\Games\Parity\createParityGameData;
 use function BrainGamesProject\Engine\checkAnswer;
 use function BrainGamesProject\Engine\congratulate;
 
-showGreeting();
+$name = showGreeting();
 showGameCondition(getParityGameCondition());
 $userCorrectAnswers = 0;
 for ($i = $userCorrectAnswers; $i < SUCCESS; $i++) {

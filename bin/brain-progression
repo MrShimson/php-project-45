@@ -10,7 +10,7 @@ use function BrainGamesProject\Games\Progression\createProgressionGameData;
 use function BrainGamesProject\Engine\checkAnswer;
 use function BrainGamesProject\Engine\congratulate;
 
-showGreeting();
+$name = showGreeting();
 showGameCondition(getProgressionGameCondition());
 $userCorrectAnswers = 0;
 for ($i = $userCorrectAnswers; $i < SUCCESS; $i++) {
