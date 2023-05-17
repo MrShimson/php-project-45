@@ -24,7 +24,11 @@ function isPrime(int $number): string
 
 function createPrimeGameData(): array
 {
-    $expression = rand(1, 100);
-    $correctAnswer = isPrime($expression);
-    return [$expression, $correctAnswer];
+    $primeGameData = [];
+    while (sizeof($primeGameData) < 3) {
+        $expression = rand(1, 100);
+        $correctAnswer = isPrime($expression);
+        array_push($primeGameData, [$expression, $correctAnswer]);
+    }
+    return $primeGameData;
 }
