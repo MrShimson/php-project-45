@@ -10,7 +10,7 @@ function showGameCondition(string $condition)
     line('%s', $condition);
 }
 
-function checkAnswer($name, array $gameRules): bool
+function checkAnswer(string $name, array $gameRules): bool
 {
     [$expression, $correctAnswer] = $gameRules;
     line("Question: %s", $expression);
@@ -25,7 +25,7 @@ function checkAnswer($name, array $gameRules): bool
     }
 }
 
-function congratulate($name)
+function congratulate(string $name)
 {
     line("Congratulations, %s!", $name);
 }
