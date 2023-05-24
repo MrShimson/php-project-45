@@ -2,7 +2,7 @@
 
 namespace BrainGamesProject\Games\Gcd;
 
-require_once __DIR__ . 'src/Engine.php';
+require_once __DIR__ . '/../Engine.php';
 
 use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
 
