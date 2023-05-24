@@ -10,9 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use function BrainGamesProject\Engine\makeGame;
-use function BrainGamesProject\Cli\showGreeting;
-use function BrainGamesProject\Games\Prime\getPrimeGameCondition;
-use function BrainGamesProject\Games\Prime\createPrimeGameData;
+use function BrainGamesProject\Games\Prime\makePrimeGame;
 
-makeGame([showGreeting(), getPrimeGameCondition(), createPrimeGameData()]);
+makePrimeGame();

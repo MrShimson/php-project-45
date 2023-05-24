@@ -2,10 +2,13 @@
 
 namespace BrainGamesProject\Games\Prime;
 
-function getPrimeGameCondition(): string
-{
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
-}
+require_once 'src/Engine.php';
+
+use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+
+use function BrainGamesProject\Engine\makeGame;
+
+const PRIME_GAME_CONDITION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime(int $number): string
 {
@@ -25,10 +28,16 @@ function isPrime(int $number): string
 function createPrimeGameData(): array
 {
     $primeGameData = [];
-    while (sizeof($primeGameData) < 3) {
+    while (sizeof($primeGameData) < ANSWERS_TO_PASS) {
         $expression = rand(1, 100);
         $correctAnswer = isPrime($expression);
         array_push($primeGameData, [$expression, $correctAnswer]);
     }
     return $primeGameData;
+}
+
+function makePrimeGame()
+{
+    $primeGameData = createPrimeGameData();
+    makeGame([PRIME_GAME_CONDITION, $primeGameData]);
 }

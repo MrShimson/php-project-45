@@ -2,16 +2,19 @@
 
 namespace BrainGamesProject\Games\Calc;
 
-function getCalcGameCondition(): string
-{
-    return 'What is the result of the expression?';
-}
+require_once 'src/Engine.php';
+
+use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+
+use function BrainGamesProject\Engine\makeGame;
+
+const CALC_GAME_CONDITION = 'What is the result of the expression?';
 
 function createCalcGameData(): array
 {
     $operators = ['+', '-', '*'];
     $calcGameData = [];
-    while (sizeof($calcGameData) < 3) {
+    while (sizeof($calcGameData) < ANSWERS_TO_PASS) {
         $operation = $operators[array_rand($operators)];
         switch ($operation) {
             case '+':
@@ -36,4 +39,10 @@ function createCalcGameData(): array
         array_push($calcGameData, [$expression,(string) $correctAnswer]);
     }
     return $calcGameData;
+}
+
+function makeCalcGame()
+{
+    $calcGameData = createCalcGameData();
+    makeGame([CALC_GAME_CONDITION, $calcGameData]);
 }

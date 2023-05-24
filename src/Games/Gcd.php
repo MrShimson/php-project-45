@@ -2,15 +2,18 @@
 
 namespace BrainGamesProject\Games\Gcd;
 
-function getGcdGameCondition(): string
-{
-    return 'Find the greatest common divisor of given numbers.';
-}
+require_once 'src/Engine.php';
+
+use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+
+use function BrainGamesProject\Engine\makeGame;
+
+const GCD_GAME_CONDITION = 'Find the greatest common divisor of given numbers.';
 
 function createGcdGameData(): array
 {
     $gcdGameData = [];
-    while (sizeof($gcdGameData) < 3) {
+    while (sizeof($gcdGameData) < ANSWERS_TO_PASS) {
         $firstNum = rand(1, 100);
         $secondNum = rand(1, 100);
         $lesserNum = $firstNum < $secondNum ? $firstNum : $secondNum;
@@ -30,4 +33,10 @@ function createGcdGameData(): array
         array_push($gcdGameData, [$expression, (string) $correctAnswer]);
     }
     return $gcdGameData;
+}
+
+function makeGcdGame()
+{
+    $gcdGameData = createGcdGameData();
+    makeGame([GCD_GAME_CONDITION, $gcdGameData]);
 }

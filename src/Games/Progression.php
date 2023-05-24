@@ -2,15 +2,18 @@
 
 namespace BrainGamesProject\Games\Progression;
 
-function getProgressionGameCondition(): string
-{
-    return 'What number is missing in the progression?';
-}
+require_once 'src/Engine.php';
+
+use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+
+use function BrainGamesProject\Engine\makeGame;
+
+const PROG_GAME_CONDITION = 'What number is missing in the progression?';
 
 function createProgressionGameData(): array
 {
     $progressionGameData = [];
-    while (sizeof($progressionGameData) < 3) {
+    while (sizeof($progressionGameData) < ANSWERS_TO_PASS) {
         $progression = [];
         $progStart = rand(1, 100); //Progression start (first number of progression)
         $progStep = rand(1, 10); //Progression step (difference between two adjacent numbers)
@@ -25,4 +28,10 @@ function createProgressionGameData(): array
         array_push($progressionGameData, [$expression, (string) $stash]);
     }
     return $progressionGameData;
+}
+
+function makeProgressionGame()
+{
+    $progressionGameData = createProgressionGameData();
+    makeGame([PROG_GAME_CONDITION, $progressionGameData]);
 }

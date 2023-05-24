@@ -2,10 +2,13 @@
 
 namespace BrainGamesProject\Games\Parity;
 
-function getParityGameCondition(): string
-{
-    return 'Answer "yes" if the number is even, otherwise answer "no".';
-}
+require_once 'src/Engine.php';
+
+use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+
+use function BrainGamesProject\Engine\makeGame;
+
+const PARITY_GAME_CONDITION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function isEven(int $number): string
 {
@@ -15,10 +18,16 @@ function isEven(int $number): string
 function createParityGameData(): array
 {
     $parityGameData = [];
-    while (sizeof($parityGameData) < 3) {
+    while (sizeof($parityGameData) < ANSWERS_TO_PASS) {
         $expression = rand(1, 100);
         $correctAnswer = isEven($expression);
         array_push($parityGameData, [$expression, $correctAnswer]);
     }
     return $parityGameData;
+}
+
+function makeParityGame()
+{
+    $parityGameData = createParityGameData();
+    makeGame([PARITY_GAME_CONDITION, $parityGameData]);
 }

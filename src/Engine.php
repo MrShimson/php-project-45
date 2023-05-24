@@ -2,13 +2,13 @@
 
 namespace BrainGamesProject\Engine;
 
+require_once 'src/Cli.php';
+
 use function cli\line;
 use function cli\prompt;
+use function BrainGamesProject\Cli\showGreeting;
 
-function showGameCondition(string $condition)
-{
-    line('%s', $condition);
-}
+const ANSWERS_TO_PASS = 3;// Объявление константы с количеством правильных ответов для прохождения игры
 
 function checkAnswer(string $name, array $gameRules): bool
 {
@@ -25,17 +25,11 @@ function checkAnswer(string $name, array $gameRules): bool
     }
 }
 
-function congratulate(string $name)
-{
-    line("Congratulations, %s!", $name);
-}
-
-const ANSWERS_TO_PASS = 3;// Объявление константы с количеством правильных ответов для прохождения игры
-
 function makeGame(array $game)
 {
-    [$playerName, $gameCondition, $gameData] = $game;
-    showGameCondition($gameCondition);
+    $playerName = showGreeting();
+    [$gameCondition, $gameData] = $game;
+    line('%s', $gameCondition);
     $userCorrectAnswers = 0;
     for ($i = $userCorrectAnswers; $i < ANSWERS_TO_PASS; $i++) {
         if (checkAnswer($playerName, array_pop($gameData)) === true) {
@@ -44,5 +38,5 @@ function makeGame(array $game)
             return;
         }
     }
-    congratulate($playerName);
+    line("Congratulations, %s!", $playerName);
 }
