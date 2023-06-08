@@ -10,7 +10,7 @@ use function BrainGamesProject\Engine\makeGame;
 
 const PRIME_GAME_CONDITION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-function isPrime(int $number): string
+function isPrime(int $number): bool
 {
     $i = 1;
     $divisiors = [];
@@ -22,7 +22,7 @@ function isPrime(int $number): string
             $i++;
         }
     }
-    return sizeof($divisiors) > 2 ? "no" : "yes";
+    return sizeof($divisiors) > 2 ? false : true;
 }
 
 function createPrimeGameData(): array
@@ -30,7 +30,7 @@ function createPrimeGameData(): array
     $primeGameData = [];
     while (sizeof($primeGameData) < ANSWERS_TO_PASS) {
         $expression = rand(1, 100);
-        $correctAnswer = isPrime($expression);
+        $correctAnswer = isPrime($expression) ? 'yes' : 'no';
         array_push($primeGameData, [$expression, $correctAnswer]);
     }
     return $primeGameData;

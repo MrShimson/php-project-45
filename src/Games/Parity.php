@@ -10,9 +10,9 @@ use function BrainGamesProject\Engine\makeGame;
 
 const PARITY_GAME_CONDITION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-function isEven(int $number): string
+function isEven(int $number): bool
 {
-    return $number % 2 === 0 ? "yes" : "no";
+    return $number % 2 === 0 ?: false;
 }
 
 function createParityGameData(): array
@@ -20,7 +20,7 @@ function createParityGameData(): array
     $parityGameData = [];
     while (sizeof($parityGameData) < ANSWERS_TO_PASS) {
         $expression = rand(1, 100);
-        $correctAnswer = isEven($expression);
+        $correctAnswer = isEven($expression) ? 'yes': 'no';
         array_push($parityGameData, [$expression, $correctAnswer]);
     }
     return $parityGameData;
