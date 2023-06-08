@@ -12,7 +12,7 @@ const PARITY_GAME_CONDITION = 'Answer "yes" if the number is even, otherwise ans
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0 ? : false;
+    return $number % 2 === 0 ?: false;
 }
 
 function createParityGameData(): array
@@ -20,7 +20,7 @@ function createParityGameData(): array
     $parityGameData = [];
     while (sizeof($parityGameData) < ANSWERS_TO_PASS) {
         $expression = rand(1, 100);
-        $correctAnswer = isEven($expression) ? 'yes': 'no';
+        $correctAnswer = isEven($expression) ? 'yes' : 'no';
         array_push($parityGameData, [$expression, $correctAnswer]);
     }
     return $parityGameData;
