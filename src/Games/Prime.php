@@ -12,6 +12,9 @@ const PRIME_GAME_CONDITION = 'Answer "yes" if given number is prime. Otherwise a
 
 function isPrime(int $number): bool
 {
+    if ($number === 1) {
+        return false;
+    }
     $i = 1;
     $divisiors = [];
     while ($i <= $number) {
