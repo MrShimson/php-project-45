@@ -4,7 +4,7 @@ namespace BrainGamesProject\Games\Prime;
 
 require_once __DIR__ . '/../Engine.php';
 
-use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+use const BrainGamesProject\Engine\ROUNDS_COUNT;
 
 use function BrainGamesProject\Engine\makeGame;
 
@@ -31,7 +31,7 @@ function isPrime(int $number): bool
 function createPrimeGameData(): array
 {
     $primeGameData = [];
-    while (sizeof($primeGameData) < ANSWERS_TO_PASS) {
+    while (sizeof($primeGameData) < ROUNDS_COUNT) {
         $expression = rand(1, 100);
         $correctAnswer = isPrime($expression) ? 'yes' : 'no';
         array_push($primeGameData, [$expression, $correctAnswer]);

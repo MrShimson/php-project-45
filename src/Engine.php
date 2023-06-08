@@ -8,7 +8,7 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGamesProject\Cli\showGreeting;
 
-const ANSWERS_TO_PASS = 3;// Объявление константы с количеством правильных ответов для прохождения игры
+const ROUNDS_COUNT = 3;// Объявление константы с количеством правильных ответов для прохождения игры
 
 function checkAnswer(string $name, array $gameRules): bool
 {
@@ -31,7 +31,7 @@ function makeGame(array $game)
     [$gameCondition, $gameData] = $game;
     line('%s', $gameCondition);
     $userCorrectAnswers = 0;
-    for ($i = $userCorrectAnswers; $i < ANSWERS_TO_PASS; $i++) {
+    for ($i = $userCorrectAnswers; $i < ROUNDS_COUNT; $i++) {
         if (checkAnswer($playerName, array_pop($gameData)) === true) {
             continue;
         } else {

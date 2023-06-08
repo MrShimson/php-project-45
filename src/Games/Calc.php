@@ -4,7 +4,7 @@ namespace BrainGamesProject\Games\Calc;
 
 require_once __DIR__ . '/../Engine.php';
 
-use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+use const BrainGamesProject\Engine\ROUNDS_COUNT;
 
 use function BrainGamesProject\Engine\makeGame;
 
@@ -14,7 +14,7 @@ function createCalcGameData(): array
 {
     $operators = ['+', '-', '*'];
     $calcGameData = [];
-    while (sizeof($calcGameData) < ANSWERS_TO_PASS) {
+    while (sizeof($calcGameData) < ROUNDS_COUNT) {
         $operation = $operators[array_rand($operators)];
         switch ($operation) {
             case '+':

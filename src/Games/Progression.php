@@ -4,7 +4,7 @@ namespace BrainGamesProject\Games\Progression;
 
 require_once __DIR__ . '/../Engine.php';
 
-use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+use const BrainGamesProject\Engine\ROUNDS_COUNT;
 
 use function BrainGamesProject\Engine\makeGame;
 
@@ -13,7 +13,7 @@ const PROG_GAME_CONDITION = 'What number is missing in the progression?';
 function createProgressionGameData(): array
 {
     $progressionGameData = [];
-    while (sizeof($progressionGameData) < ANSWERS_TO_PASS) {
+    while (sizeof($progressionGameData) < ROUNDS_COUNT) {
         $progression = [];
         $progStart = rand(1, 100); //Progression start (first number of progression)
         $progStep = rand(1, 10); //Progression step (difference between two adjacent numbers)

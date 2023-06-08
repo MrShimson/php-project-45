@@ -4,7 +4,7 @@ namespace BrainGamesProject\Games\Parity;
 
 require_once __DIR__ . '/../Engine.php';
 
-use const BrainGamesProject\Engine\ANSWERS_TO_PASS;
+use const BrainGamesProject\Engine\ROUNDS_COUNT;
 
 use function BrainGamesProject\Engine\makeGame;
 
@@ -18,7 +18,7 @@ function isEven(int $number): bool
 function createParityGameData(): array
 {
     $parityGameData = [];
-    while (sizeof($parityGameData) < ANSWERS_TO_PASS) {
+    while (sizeof($parityGameData) < ROUNDS_COUNT) {
         $expression = rand(1, 100);
         $correctAnswer = isEven($expression) ? 'yes' : 'no';
         array_push($parityGameData, [$expression, $correctAnswer]);
