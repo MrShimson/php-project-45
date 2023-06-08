@@ -25,14 +25,14 @@ function checkAnswer(string $name, array $gameRules): bool
     }
 }
 
-function makeGame(array $game)
+function makeGame(array $gameData)
 {
     $playerName = showGreeting();
-    [$gameCondition, $gameData] = $game;
+    [$gameCondition, $gameValues] = $gameData;
     line('%s', $gameCondition);
     $userCorrectAnswers = 0;
     for ($i = $userCorrectAnswers; $i < ROUNDS_COUNT; $i++) {
-        if (checkAnswer($playerName, array_pop($gameData)) === true) {
+        if (checkAnswer($playerName, array_pop($gameValues)) === true) {
             continue;
         } else {
             return;
