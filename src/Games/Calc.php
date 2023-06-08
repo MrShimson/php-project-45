@@ -16,16 +16,14 @@ function createCalcGameData(): array
     $calcGameData = [];
     while (sizeof($calcGameData) < ROUNDS_COUNT) {
         $operation = $operators[array_rand($operators)];
+        $firstNum = rand(1, 100);
+        $secondNum = rand(1, 100);
         switch ($operation) {
             case '+':
-                $firstNum = rand(1, 100);
-                $secondNum = rand(1, 100);
                 $expression = "{$firstNum} + {$secondNum}";
                 $correctAnswer = $firstNum + $secondNum;
                 break;
             case '-':
-                $firstNum = rand(1, 100);
-                $secondNum = rand(1, 100);
                 $expression = "{$firstNum} - {$secondNum}";
                 $correctAnswer = $firstNum - $secondNum;
                 break;
