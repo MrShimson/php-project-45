@@ -10,21 +10,6 @@ use function BrainGamesProject\Cli\showGreeting;
 
 const ROUNDS_COUNT = 3;// Объявление константы с количеством правильных ответов для прохождения игры
 
-function checkAnswer(string $name, array $gameRules): bool
-{
-    [$expression, $correctAnswer] = $gameRules;
-    line("Question: %s", $expression);
-    $userAnswer = trim(prompt("Your answer"), " ");
-    if ($correctAnswer === $userAnswer) {
-        line("Correct!");
-        return true;
-    } else {
-        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-        line("Let's try again, %s!", $name);
-        return false;
-    }
-}
-
 function makeGame(array $gameData)
 {
     $playerName = showGreeting();
@@ -32,11 +17,15 @@ function makeGame(array $gameData)
     line('%s', $gameCondition);
     $userCorrectAnswers = 0;
     for ($i = $userCorrectAnswers; $i < ROUNDS_COUNT; $i++) {
-        if (checkAnswer($playerName, array_pop($gameValues)) === true) {
-            continue;
-        } else {
+        [$expression, $correctAnswer] = array_pop($gameValues);
+        line("Question: %s", $expression);
+        $userAnswer = trim(prompt("Your answer"), " ");
+        if ($correctAnswer !== $userAnswer) {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
+            line("Let's try again, %s!", $playerName);
             return;
         }
+        line("Correct!");
     }
     line("Congratulations, %s!", $playerName);
 }
